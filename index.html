@@ -17,10 +17,6 @@
             box-shadow: var(--wheel-shadow, 0 20px 30px rgba(255, 150, 180, 0.3));
             cursor: pointer;
             transition: transform 0.1s ease;
-        }
-        
-        /* Обводка колеса адаптирована под темы */
-        .wheel-canvas {
             border: 3px solid var(--wheel-sector-stroke, #ffffff);
         }
         
@@ -94,54 +90,83 @@
             margin: 10px 0;
         }
         
-        /* Модалка выбора темы */
+        /* Модалка выбора темы - АДАПТИВНАЯ */
         .theme-selector-modal .custom-modal-content {
             max-width: 500px;
+            width: 95%;
+            padding: 15px;
         }
         
         .theme-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+            max-height: 60vh;
+            overflow-y: auto;
+            padding: 5px;
         }
         
         .theme-card {
             background: var(--card-bg);
             border: 3px solid var(--card-border);
-            border-radius: 30px 10px 30px 10px;
-            padding: 20px 10px;
+            border-radius: 20px 8px 20px 8px;
+            padding: 15px 8px;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             box-shadow: var(--card-shadow);
+            min-width: 0;
         }
         
         .theme-card.active {
             border-color: var(--special-block-border);
-            transform: scale(1.05);
-            box-shadow: 0 0 20px var(--special-name-shadow);
+            transform: scale(1.03);
+            box-shadow: 0 0 15px var(--special-name-shadow);
         }
         
         .theme-card:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
         
         .theme-preview {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            flex-shrink: 0;
         }
         
         .theme-name {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--name-color);
+            text-align: center;
+            word-break: break-word;
+        }
+        
+        @media (max-width: 380px) {
+            .theme-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .theme-card {
+                padding: 12px 5px;
+            }
+            
+            .theme-preview {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .theme-name {
+                font-size: 0.9rem;
+            }
         }
         
         .theme-card.default .theme-preview { background: linear-gradient(145deg, #ffb7c5, #ff8da1); }
@@ -154,6 +179,173 @@
         
         .theme-card.hidden {
             display: none;
+        }
+
+        /* ИСПРАВЛЕННЫЕ СТИЛИ ДЛЯ РОМАШКИ */
+        .flower {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .center {
+            width: 80px;
+            height: 80px;
+            background: var(--daisy-center-bg);
+            border-radius: 50%;
+            box-shadow: var(--daisy-center-shadow);
+            border: 3px solid var(--daisy-center-border);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--daisy-center-color);
+            text-shadow: var(--daisy-center-text-shadow);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .center::after {
+            content: "";
+            position: absolute;
+            font-size: 0.9rem;
+            color: var(--daisy-center-dots);
+            opacity: 0.7;
+            letter-spacing: 4px;
+            transform: rotate(-15deg);
+            white-space: nowrap;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-15deg);
+        }
+
+        .petals-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .daisy-petal {
+            position: absolute;
+            width: 70px;
+            height: 110px;
+            background: var(--daisy-petal-bg);
+            border-radius: 50% 50% 40% 40%;
+            box-shadow: var(--daisy-petal-shadow);
+            border: 2px solid var(--daisy-petal-border);
+            pointer-events: auto;
+            transition: opacity 0.2s ease;
+            transform-origin: center bottom;
+            top: 50%;
+            left: 50%;
+            margin-left: -35px; /* половина ширины */
+            margin-top: -110px; /* полная высота со знаком минус */
+            opacity: 1;
+        }
+
+        .daisy-petal:nth-child(odd) {
+            background: var(--daisy-petal-odd-bg);
+        }
+
+        .spinning .daisy-petal {
+            animation: spinPetal 0.2s infinite linear;
+        }
+
+        .spinning .center {
+            animation: pulseGlow 0.2s infinite alternate;
+        }
+
+        @keyframes spinPetal {
+            0% { transform: rotate(var(--rot)); }
+            100% { transform: rotate(calc(var(--rot) + 360deg)); }
+        }
+
+        @keyframes pulseGlow {
+            from { box-shadow: 0 0 0 0 var(--daisy-glow-from); }
+            to { box-shadow: 0 0 20px 10px var(--daisy-glow-to); }
+        }
+
+        @media (max-width: 380px) {
+            .flower {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .center {
+                width: 65px;
+                height: 65px;
+                font-size: 1.3rem;
+            }
+            
+            .daisy-petal {
+                width: 55px;
+                height: 90px;
+                margin-left: -27.5px;
+                margin-top: -90px;
+            }
+        }
+
+        .daisy-fortune {
+            font-size: clamp(1.3rem, 5vw, 1.6rem);
+            background: var(--daisy-fortune-bg);
+            padding: 10px 20px;
+            border-radius: 40px;
+            border: 3px solid var(--daisy-fortune-border);
+            margin: 15px auto;
+            display: inline-block;
+            color: var(--daisy-fortune-color);
+            font-weight: 500;
+            box-shadow: var(--daisy-fortune-shadow);
+            min-width: 200px;
+        }
+
+        .daisy-controls {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+
+        .daisy-btn {
+            border: 3px solid var(--daisy-btn-border);
+            border-radius: 40px;
+            padding: 10px 25px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            background: var(--daisy-btn-bg);
+            color: var(--daisy-btn-text);
+            cursor: pointer;
+            box-shadow: var(--daisy-btn-shadow);
+            transition: 0.15s;
+            min-width: 140px;
+        }
+
+        .daisy-btn:active {
+            transform: scale(0.94);
+        }
+
+        .daisy-btn.hidden {
+            display: none;
+        }
+
+        .daisy-btn:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .daisy-spin-btn {
+            background: var(--daisy-spin-btn-bg);
         }
     </style>
 </head>
@@ -303,7 +495,7 @@
         </div>
     </div>
 
-    <!-- НОВАЯ МОДАЛКА: Выбор темы -->
+    <!-- НОВАЯ МОДАЛКА: Выбор темы (АДАПТИВНАЯ) -->
     <div id="themeSelectorModal" class="custom-modal theme-selector-modal">
         <div class="custom-modal-content">
             <div class="modal-flower">🎨🌸🎨</div>
@@ -311,43 +503,43 @@
             
             <div class="theme-grid" id="themeGrid">
                 <!-- Тема по умолчанию -->
-                <div class="theme-card default active" onclick="selectTheme('default')">
+                <div class="theme-card default active" data-theme="default" onclick="selectTheme('default')">
                     <div class="theme-preview"></div>
                     <span class="theme-name">Розовая</span>
                 </div>
                 
                 <!-- Белая тема -->
-                <div class="theme-card white" onclick="selectTheme('white')">
+                <div class="theme-card white" data-theme="white" onclick="selectTheme('white')">
                     <div class="theme-preview"></div>
                     <span class="theme-name">Белая</span>
                 </div>
                 
                 <!-- Сиреневая тема -->
-                <div class="theme-card lilac" onclick="selectTheme('lilac')">
+                <div class="theme-card lilac" data-theme="lilac" onclick="selectTheme('lilac')">
                     <div class="theme-preview"></div>
                     <span class="theme-name">Сиреневая</span>
                 </div>
                 
                 <!-- Ярко-розовая тема -->
-                <div class="theme-card bright-pink" onclick="selectTheme('bright-pink')">
+                <div class="theme-card bright-pink" data-theme="bright-pink" onclick="selectTheme('bright-pink')">
                     <div class="theme-preview"></div>
                     <span class="theme-name">Ярко-розовая</span>
                 </div>
                 
                 <!-- Золотая тема (скрыта по умолчанию) -->
-                <div class="theme-card gold hidden" onclick="selectTheme('gold')">
+                <div class="theme-card gold hidden" data-theme="gold" onclick="selectTheme('gold')">
                     <div class="theme-preview"></div>
                     <span class="theme-name">Золотая</span>
                 </div>
                 
                 <!-- Космическая тема (скрыта по умолчанию) -->
-                <div class="theme-card cosmic hidden" onclick="selectTheme('cosmic')">
+                <div class="theme-card cosmic hidden" data-theme="cosmic" onclick="selectTheme('cosmic')">
                     <div class="theme-preview"></div>
                     <span class="theme-name">Космическая</span>
                 </div>
                 
                 <!-- Темно-синяя тема (скрыта по умолчанию) -->
-                <div class="theme-card dark-blue hidden" onclick="selectTheme('dark-blue')">
+                <div class="theme-card dark-blue hidden" data-theme="dark-blue" onclick="selectTheme('dark-blue')">
                     <div class="theme-preview"></div>
                     <span class="theme-name">Темно-синяя</span>
                 </div>
@@ -450,7 +642,7 @@
     <script>
         // ==================== ИНИЦИАЛИЗАЦИЯ ПЕРЕМЕННЫХ ====================
         let flowerCount = 0;
-        const MAX_FLOWERS = 50000000;
+        const MAX_FLOWERS = 100000000000000000000000000000000000000000000000;
         let casinoUnlocked = false;
         let goldThemeUnlocked = false;
         let cosmicThemeUnlocked = false;
@@ -893,6 +1085,10 @@
                     addFlowers(1);
                     message = 'не смешно 😕 +1 цветок';
                     icon = '😕';
+                } else if (code === 'МЫВАСЛЮБИМ') {
+                    addFlowers(1000000000);
+                    message = 'Мы вас тоже! + миллиард цветов!';
+                    icon = '';
                 } else if (code === '1337') {
                     addFlowers(133700);
                     message = 'elite 👾 +133700 цветов';
@@ -935,7 +1131,7 @@
                     }
                 }
                 
-                if (code === '1488' || code === '52' || code === '67' || code === '1337' || code === '69' || code === '505') {
+                if (code === '1488' || code === '52' || code === '67' || code === '1337' || code === '69' || code === '505' || code === 'МЫВАСЛЮБИМ') {
                     usedPromoCodes.add(code);
                     saveToStorage();
                     checkVictory();
@@ -1050,7 +1246,7 @@
         let daisyPetalElements = [];
 
         function initDaisyGame() {
-            daisyTotalPetals = Math.floor(Math.random() * 4) + 9;
+            daisyTotalPetals = Math.floor(Math.random() * 4) + 9; // 9-12
             createDaisyPetals(daisyTotalPetals);
             setDaisyVisiblePetals(daisyTotalPetals);
             daisyCurrentPhraseIndex = Math.floor(Math.random() * DAISY_PHRASES.length);
@@ -1078,7 +1274,7 @@
                 const angle = angleStep * i;
                 const petal = document.createElement('div');
                 petal.className = 'daisy-petal';
-                petal.style.transform = `translate(-50%, 0) rotate(${angle}deg)`;
+                petal.style.transform = `rotate(${angle}deg)`;
                 petal.style.setProperty('--rot', angle + 'deg');
                 container.appendChild(petal);
                 daisyPetalElements.push(petal);
@@ -1309,7 +1505,7 @@
             wheelCtxGame.lineWidth = 3;
             wheelCtxGame.stroke();
             
-            // Обводка колеса
+            // Обводка колеса (адаптивная)
             wheelCtxGame.beginPath();
             wheelCtxGame.arc(centerX, centerY, radius + 5, 0, 2 * Math.PI);
             wheelCtxGame.strokeStyle = centerStroke;
@@ -1534,7 +1730,7 @@
             wheelCtx.lineWidth = 3;
             wheelCtx.stroke();
             
-            // Обводка колеса
+            // Обводка колеса (адаптивная)
             wheelCtx.beginPath();
             wheelCtx.arc(centerX, centerY, radius + 5, 0, 2 * Math.PI);
             wheelCtx.strokeStyle = centerStroke;
