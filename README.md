@@ -1,4 +1,4 @@
-# 🌸 Интерактивная открытка к 8 марта
+# 🌸 Интерактивная открытка к 8 марта / Interactive March 8 Greeting Card
 
 <div align="center">
 
@@ -9,9 +9,7 @@
 
 **✨ Уникальная веб-открытка с мини-играми, коллекцией тем и системой прогрессии ✨**
 
-[🔗 Демо](https://su57ks.github.io/8march/) • 
-[📖 Русская версия](#-русская-версия) • 
-[📖 English version](#-english-version)
+[🔗 Демо](https://su57ks.github.io/8march/)
 
 ---
 
@@ -22,10 +20,10 @@
 ---
 
 ## 📋 Содержание
-- [🚀 Запуск проекта](#-запуск-проекта)
-- [👥 Команда проекта](#-команда-проекта)
 - [🌸 Русская версия](#-русская-версия)
-  - [📝 Описание проекта](#-описание-проекта-1)
+  - [🚀 Запуск проекта](#-запуск-проекта)
+  - [👥 Команда проекта](#-команда-проекта)
+  - [📝 Описание проекта](#-описание-проекта)
   - [✨ Ключевые возможности](#-ключевые-возможности)
   - [🎮 Мини-игры](#-мини-игры)
   - [🎨 Темы оформления](#-темы-оформления)
@@ -33,28 +31,31 @@
   - [📊 Система прогрессии](#-система-прогрессии)
   - [📁 Структура проекта](#-структура-проекта)
   - [🛠 Технологии](#-технологии)
+  - [📜 Лицензия](#-лицензия)
 - [🇬🇧 English version](#-english-version)
   - [🚀 Project Launch](#-project-launch)
   - [👥 Project Team](#-project-team)
-  - [📝 Project Description](#-project-description-1)
+  - [📝 Project Description](#-project-description)
   - [✨ Key Features](#-key-features)
-  - [🎮 Mini-games](#-mini-games-1)
+  - [🎮 Mini-games](#-mini-games)
   - [🎨 Color Themes](#-color-themes)
   - [🔑 Promo Codes & Secrets](#-promo-codes--secrets)
   - [📊 Progression System](#-progression-system)
-  - [📁 Project Structure](#-project-structure-1)
-  - [🛠 Technologies](#-technologies-1)
-- [📜 Лицензия](#-лицензия)
+  - [📁 Project Structure](#-project-structure)
+  - [🛠 Technologies](#-technologies)
+  - [📜 License](#-license)
 
 ---
 
-## 🚀 Запуск проекта
+## 🌸 Русская версия
 
-### Простой способ
+### 🚀 Запуск проекта
+
+#### Простой способ
 1. Перейдите по ссылке: **[su57ks.github.io/8march/](https://su57ks.github.io/8march/)**
 2. Наслаждайтесь интерактивной открыткой! 🎉
 
-### Локальный запуск
+#### Локальный запуск
 ```bash
 # Клонируйте репозиторий
 git clone https://github.com/su57ks/8march.git
@@ -66,14 +67,14 @@ cd 8march
 # Или запустите локальный сервер (например, с помощью Live Server в VS Code)
 ```
 
-### Требования
+#### Требования
 - Любой современный браузер (Chrome, Firefox, Safari, Edge)
 - Включенный JavaScript
 - Поддержка LocalStorage
 
 ---
 
-## 👥 Команда проекта
+### 👥 Команда проекта
 
 | Роль | Имя | Контакт |
 |------|-----|---------|
@@ -84,12 +85,12 @@ cd 8march
 
 ---
 
-## 🌸 Русская версия
-
 ### 📝 Описание проекта
 **Интерактивная открытка к 8 марта** — это не просто статичное поздравление, а полноценное веб-приложение с игровыми механиками. Вместо обычной картинки пользователь получает возможность взаимодействовать с контентом: собирать виртуальные цветы, открывать новые темы оформления, играть в мини-игры и читать персонализированные поздравления.
 
 Проект создан с душой и вниманием к деталям: каждая мелочь, от анимации лепестков до цветопада, призвана создать праздничное настроение.
+
+---
 
 ### ✨ Ключевые возможности
 
@@ -105,6 +106,8 @@ cd 8march
 | | Синхронизация | Сохраняются цветы, открытые темы, использованные промокоды |
 | 🎯 **Разблокировки** | Прогрессивное открытие | Новый контент доступен при достижении целей |
 | | Секретные темы | 3 скрытые темы, открываемые через прогресс или промокоды |
+
+---
 
 ### 🎮 Мини-игры
 
@@ -149,6 +152,8 @@ cd 8march
 - При выпадении — ливень из соответствующего цветка
 - Простая механика без ставок
 
+---
+
 ### 🎨 Темы оформления
 
 | Тема | Класс | Цветовая схема | Статус | Градиент |
@@ -161,6 +166,8 @@ cd 8march
 | **Космическая** | `theme-cosmic` | Фиолетово-космическая | 🔐 Промокод `505` | `#0a0f1e → #2a1f4a` |
 | **Тёмно-синяя** | `theme-dark-blue` | Глубокий синий | 🔐 Промокод `1337` | `#0a1a2a → #0a1f4a` |
 
+---
+
 ### 🔑 Промокоды и секреты
 
 | Промокод | Эффект | Тип |
@@ -172,6 +179,8 @@ cd 8march
 | `1337` | 👾 +133700 цветов + тёмно-синяя тема | Секретный |
 | `505` | 🌟 +505812 цветов + космическая тема | Секретный |
 | `МЫВАСЛЮБИМ` | 💖 +1 млрд цветов | Пасхалка |
+
+---
 
 ### 📊 Система прогрессии
 
@@ -193,6 +202,8 @@ cd 8march
     Возможность выигрыша/проигрыша
 ```
 
+---
+
 ### 📁 Структура проекта
 
 ```
@@ -208,6 +219,8 @@ cd 8march
 └── 📄 README.md                            # Документация
 ```
 
+---
+
 ### 🛠 Технологии
 
 | Технология | Применение |
@@ -222,15 +235,29 @@ cd 8march
 
 ---
 
+### 📜 Лицензия
+
+Проект распространяется под лицензией MIT. Подробнее в файле `LICENSE`.
+
+<div align="center">
+
+**Сделано с любовью к празднику и вниманием к деталям** 💗
+
+*Если вам понравился проект — поставьте звезду на GitHub! ⭐*
+
+</div>
+
+---
+
 ## 🇬🇧 English version
 
 ### 🚀 Project Launch
 
-### Simple way
+#### Simple way
 1. Go to the link: **[su57ks.github.io/8march/](https://su57ks.github.io/8march/)**
 2. Enjoy the interactive greeting card! 🎉
 
-### Local launch
+#### Local launch
 ```bash
 # Clone the repository
 git clone https://github.com/su57ks/8march.git
@@ -242,7 +269,7 @@ cd 8march
 # Or run a local server (e.g., with Live Server in VS Code)
 ```
 
-### Requirements
+#### Requirements
 - Any modern browser (Chrome, Firefox, Safari, Edge)
 - JavaScript enabled
 - LocalStorage support
@@ -265,6 +292,8 @@ cd 8march
 
 The project is crafted with soul and attention to detail — every little thing, from petal animation to flower rain, is designed to create a festive mood.
 
+---
+
 ### ✨ Key Features
 
 | Category | Feature | Description |
@@ -280,6 +309,8 @@ The project is crafted with soul and attention to detail — every little thing,
 | 🎯 **Unlockables** | Progressive unlocking | New content available upon reaching goals |
 | | Secret themes | 3 hidden themes unlocked via progress or promo codes |
 
+---
+
 ### 🎮 Mini-games
 
 #### Mini-games Comparison Table
@@ -294,6 +325,37 @@ The project is crafted with soul and attention to detail — every little thing,
 | **Visualization** | CSS daisy | Canvas wheel | Canvas wheel |
 | **Difficulty** | 🟢 Easy | 🔴 Gambling | 🟡 Random |
 
+#### Detailed Description
+
+**🌼 Daisy Fortune Telling** (`chamomile.html`)
+- 9 to 12 petals on the flower
+- 6 prediction options:
+  - "Loves 💖"
+  - "Doesn't love 🖤"
+  - "Will spit 💧"
+  - "Will kiss 💋"
+  - "Will hug 🤗"
+  - "Will send to hell 👿"
+- Final prediction when the last petal is plucked
+- "Fortune" button to restart
+- Spin animation
+
+**🎰 "Bouquet" Casino** (`casino.html`)
+- Betting system with input field
+- "Max" button for maximum bet
+- 8 sectors with multipliers: 0, 0, 0.1, 0.1, 1.5, 2, 5, 11
+- Physics-based spin with deceleration
+- Result shown in modal window
+- Flower rain on win
+
+**🎡 Wheel of Fortune** (`bouquet.html`)
+- 8 sectors with flowers: Sakura, Chamomile, Sunflower, Hibiscus, Tulip, Rose, Sakura (duplicate), Twig
+- Flower names capitalized
+- Rain of the corresponding flower on result
+- Simple mechanic without bets
+
+---
+
 ### 🎨 Color Themes
 
 | Theme | Class | Color Scheme | Status | Gradient |
@@ -306,6 +368,8 @@ The project is crafted with soul and attention to detail — every little thing,
 | **Cosmic** | `theme-cosmic` | Purple cosmic | 🔐 Promo code `505` | `#0a0f1e → #2a1f4a` |
 | **Dark Blue** | `theme-dark-blue` | Deep blue | 🔐 Promo code `1337` | `#0a1a2a → #0a1f4a` |
 
+---
+
 ### 🔑 Promo Codes & Secrets
 
 | Promo Code | Effect | Type |
@@ -317,6 +381,8 @@ The project is crafted with soul and attention to detail — every little thing,
 | `1337` | 👾 +133700 flowers + dark blue theme | Secret |
 | `505` | 🌟 +505812 flowers + cosmic theme | Secret |
 | `МЫВАСЛЮБИМ` | 💖 +1 billion flowers | Easter egg |
+
+---
 
 ### 📊 Progression System
 
@@ -338,6 +404,8 @@ Collect flowers (clicker)
     Win/lose opportunity
 ```
 
+---
+
 ### 📁 Project Structure
 
 ```
@@ -353,6 +421,8 @@ Collect flowers (clicker)
 └── 📄 README.md                            # Documentation
 ```
 
+---
+
 ### 🛠 Technologies
 
 | Technology | Application |
@@ -367,20 +437,16 @@ Collect flowers (clicker)
 
 ---
 
-## 📜 Лицензия / License
-
-Проект распространяется под лицензией MIT. Подробнее в файле `LICENSE`.
+### 📜 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
----
-
 <div align="center">
 
-**Сделано с любовью к празднику и вниманием к деталям** 💗
+**Made with love for the holiday and attention to detail** 💗
 
-*Если вам понравился проект — поставьте звезду на GitHub! ⭐*
+*If you like the project — give it a star on GitHub! ⭐*
 
-[⬆ Наверх / Back to top](#-интерактивная-открытка-к-8-марта)
+[⬆ Back to top](#-интерактивная-открытка-к-8-марта--interactive-march-8-greeting-card)
 
 </div>
