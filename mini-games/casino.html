@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Казино «Букет» — 8 марта</title>
+    <style>
+        /* ========== base.css (только дефолтная тема + казино) ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        html, body {
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            width: 100%;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            background: linear-gradient(150deg, #fef3f8 0%, #ffeef4 100%);
+            background-attachment: fixed;
+            font-family: -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            touch-action: pan-y pinch-zoom;
+        }
+
+        .bg-gradient-fix {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(150deg, #fef3f8 0%, #ffeef4 100%);
+            z-index: -1;
+        }
+
+        /* летающие лепестки */
+        .petals-front {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            opacity: 0.3;
+            color: #ffb7c5;
+            filter: drop-shadow(0 3px 3px rgba(255,200,220,0.2));
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* главная карточка */
+        .main-card {
+            max-width: 500px;
+            width: 100%;
+            background: rgba(255, 245, 250, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 40px 40px 35px 35px;
+            box-shadow: 0 15px 30px rgba(255, 150, 180, 0.25), 0 0 0 2px rgba(255,255,255,0.8) inset;
+            border: 1px solid rgba(255, 220, 230, 0.9);
+            padding: 20px 16px 18px;
+            position: relative;
+            z-index: 10;
+            margin: 0 auto;
+        }
+
+        .settings-button {
+            position: absolute;
+            top: 12px; right: 15px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            background: rgba(255,255,255,0.6);
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center; justify-content: center;
+            backdrop-filter: blur(4px);
+            border: 2px solid white;
+            box-shadow: 0 2px 8px #ffc0cb;
+            transition: 0.2s;
+            z-index: 50;
+        }
+
+        .settings-button:active {
+            transform: rotate(30deg) scale(1.1);
+            background: #ffe2ed;
+        }
+
+        .main-title {
+            text-align: center;
+            font-size: 3.2rem;
+            font-weight: 350;
+            color: #a55e71;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-shadow: 3px 3px 10px rgba(255,200,220,0.6), 0 1px 0 white;
+            font-family: 'Georgia', serif;
+            line-height: 1.1;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .main-title:active {
+            transform: scale(1.02);
+            text-shadow: 0 0 15px #ff9bb6;
+        }
+
+        .soft-sub {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #bc7f90;
+            background: rgba(255,235,240,0.8);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            width: fit-content;
+            margin: 0 auto 20px auto;
+            border: 1px solid rgba(255,255,255,0.9);
+            backdrop-filter: blur(2px);
+            font-style: italic;
+            box-shadow: 0 3px 10px #ffdbe4;
+        }
+
+        /* ========== КАЗИНО (компактный стиль) ========== */
+        .balance-panel {
+            background: rgba(255,255,255,0.8);
+            border: 2px solid white;
+            border-radius: 60px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            color: #a15168;
+            box-shadow: 0 5px 15px #ffd0da;
+            margin: 0 0 20px 0;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .balance-emoji {
+            font-size: 2rem;
+        }
+
+        .balance-amount {
+            font-weight: 600;
+            background: white;
+            padding: 4px 16px;
+            border-radius: 40px;
+            border: 1px solid #ffb7c5;
+        }
+
+        .bet-area {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0 20px;
+        }
+
+        .bet-input {
+            flex: 2 1 140px;
+            padding: 14px 18px;
+            font-size: 1.4rem;
+            border: 3px solid white;
+            border-radius: 60px;
+            background: rgba(255,240,245,0.95);
+            color: #774c5a;
+            text-align: center;
+            outline: none;
+            font-weight: 600;
+            box-shadow: 0 2px 10px #ffb0c0;
+            -webkit-appearance: none;
+        }
+
+        .max-bet-btn {
+            background: #ffc1d2;
+            border: 3px solid white;
+            border-radius: 60px;
+            padding: 10px 18px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #7a4452;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #e6a5b8, 0 8px 12px #ffb0c0;
+            transition: 0.1s;
+            flex: 1 0 auto;
+        }
+
+        .max-bet-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #e6a5b8, 0 8px 12px #ffb0c0;
+        }
+
+        /* рулетка */
+        .wheel-container {
+            position: relative;
+            width: min(70vw, 280px);
+            height: min(70vw, 280px);
+            margin: 0 auto 20px;
+        }
+
+        .wheel-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 50%;
+            background: #ffe7ef;
+            box-shadow: 0 15px 30px rgba(240,140,170,0.5), 0 0 0 3px white inset, 0 0 0 6px #ffd0dd;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .wheel-canvas:active {
+            transform: scale(0.98);
+        }
+
+        .pointer {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 30px solid #ffa5bc;
+            filter: drop-shadow(0 8px 6px rgba(255,140,170,0.5));
+            z-index: 12;
+        }
+
+        /* кнопка по центру! */
+        .spin-btn {
+            background: #ffe4b0;
+            border: 3px solid white;
+            border-radius: 60px;
+            padding: 16px 30px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #a55e71;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #e6b7c8, 0 12px 20px rgba(255,150,180,0.4);
+            transition: 0.1s linear;
+            margin: 5px auto 15px;
+            display: block;          /* центрирование через margin auto */
+            width: fit-content;
+            letter-spacing: 1px;
+        }
+
+        .spin-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #e6b7c8, 0 12px 20px rgba(255,150,180,0.4);
+        }
+
+        .spin-btn:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            transform: translateY(0);
+            box-shadow: 0 8px 0 #e6b7c8, 0 12px 20px rgba(255,150,180,0.4);
+        }
+
+        .last-result {
+            font-size: 1.4rem;
+            background: rgba(255,240,245,0.8);
+            border-radius: 60px;
+            padding: 12px 18px;
+            color: #a15168;
+            border: 2px solid white;
+            margin: 10px 0 0;
+            text-align: center;
+            font-weight: 500;
+            box-shadow: 0 2px 8px #ffd0da;
+        }
+
+        .signature {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 1.2rem;
+            color: #c58396;
+            font-style: italic;
+            border-top: 2px dashed #ffc9d6;
+            padding-top: 15px;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+        }
+
+        .signature:active {
+            color: #a55e71;
+        }
+
+        .signature span {
+            font-size: 1.4rem;
+            margin: 0 3px;
+        }
+
+        /* модалка */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255,210,225,0.6);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+        }
+
+        .modal-content {
+            background: rgba(255,245,250,0.98);
+            backdrop-filter: blur(10px);
+            border: 3px solid white;
+            border-radius: 60px 20px 60px 20px;
+            padding: 30px 20px;
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 35px #feb0c2;
+            animation: popIn 0.3s;
+        }
+
+        .modal-flower {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-message {
+            font-size: 1.7rem;
+            color: #a15168;
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .modal-btn {
+            border: 2px solid white;
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-size: 1.3rem;
+            background: #ffc1d2;
+            color: #7a4452;
+            cursor: pointer;
+            transition: 0.2s;
+            margin: 15px auto 0;   /* центрирование */
+            display: inline-block;
+            font-weight: 600;
+            min-width: 140px;
+        }
+
+        .modal-btn:active {
+            background: #ffd5e2;
+            transform: scale(0.97);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* дождь цветов */
+        .rain-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .falling-flower {
+            position: absolute;
+            font-size: 2.2rem;
+            opacity: 0.8;
+            animation: fallFlower linear forwards;
+            color: #ff9eb5;
+            filter: drop-shadow(0 5px 8px rgba(255,180,200,0.7));
+        }
+
+        @keyframes fallFlower {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.9; }
+            100% { transform: translateY(110vh) rotate(480deg); opacity: 0.2; }
+        }
+
+        @media (max-width: 380px) {
+            .main-title { font-size: 2.5rem; }
+            .spin-btn { font-size: 1.5rem; padding: 14px 24px; }
+            .bet-input { font-size: 1.2rem; padding: 12px; }
+        }
+    </style>
+</head>
+<body id="mainBody">
+    <div class="petals-front" id="petalsFront"></div>
+    <div class="bg-gradient-fix"></div>
+
+    <div class="main-card">
+        <!-- иконка настроек (для красоты) -->
+        <div class="settings-button" id="settingsPlaceholder">⚙️</div>
+
+        <h1 class="main-title" id="titleClick">🎰 Казино</h1>
+        <div class="soft-sub">крути и умножай цветы</div>
+
+        <!-- баланс -->
+        <div class="balance-panel">
+            <span class="balance-emoji">🌸</span>
+            <span class="balance-amount" id="balanceDisplay">1000</span>
+            <span>цветов</span>
+        </div>
+
+        <!-- ставка -->
+        <div class="bet-area">
+            <input type="number" id="betInput" class="bet-input" value="10" min="1" step="1" inputmode="numeric">
+            <button class="max-bet-btn" id="maxBetBtn">Макс</button>
+        </div>
+
+        <!-- барабан -->
+        <div class="wheel-container">
+            <div class="pointer"></div>
+            <canvas id="wheelCanvas" class="wheel-canvas" width="600" height="600"></canvas>
+        </div>
+
+        <!-- КНОПКА ПО ЦЕНТРУ (spin-btn уже display:block margin:auto) -->
+        <button class="spin-btn" id="spinButton">🎰 Крутить</button>
+
+        <!-- последний результат -->
+        <div class="last-result" id="lastResult">Сделай ставку</div>
+
+        <!-- подпись -->
+        <div class="signature" id="easterEgg">
+            <span>💗</span> by Aizen with love <span>💗</span>
+        </div>
+    </div>
+
+    <!-- модалка сообщений -->
+    <div id="messageModal" class="custom-modal">
+        <div class="modal-content">
+            <div class="modal-flower" id="modalIcon">🌸</div>
+            <div class="modal-message" id="modalText">Сообщение</div>
+            <div class="modal-btn" onclick="closeMessageModal()">OK</div>
+        </div>
+    </div>
+
+    <!-- цветопад -->
+    <div class="rain-container" id="rainContainer"></div>
+
+    <script>
+        (function() {
+            // лепестки
+            function createPetals(count = 22) {
+                const container = document.getElementById('petalsFront');
+                if (!container) return;
+                container.innerHTML = '';
+                const list = ['🌸', '🌷', '🌼', '🌺'];
+                for (let i = 0; i < count; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'petal';
+                    p.textContent = list[Math.floor(Math.random() * list.length)];
+                    p.style.left = Math.random() * 100 + '%';
+                    p.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                    p.style.animationDelay = Math.random() * -15 + 's';
+                    p.style.fontSize = (Math.random() * 1.2 + 0.9) + 'rem';
+                    container.appendChild(p);
+                }
+            }
+            createPetals(22);
+
+            // цветопад
+            function flowerRain(count = 18, specific = null) {
+                const rain = document.getElementById('rainContainer');
+                const flowers = ['🌸', '🌷', '🌼', '🌺', '🌹', '🌻'];
+                for (let i = 0; i < count; i++) {
+                    setTimeout(() => {
+                        const f = document.createElement('div');
+                        f.className = 'falling-flower';
+                        if (specific && Math.random() < 0.6) f.textContent = specific;
+                        else f.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                        f.style.left = Math.random() * 100 + '%';
+                        f.style.animationDuration = (Math.random() * 3 + 2.5) + 's';
+                        f.style.fontSize = (Math.random() * 2 + 1.8) + 'rem';
+                        rain.appendChild(f);
+                        setTimeout(() => f.remove(), 6000);
+                    }, i * 30);
+                }
+            }
+
+            // ---------- КАЗИНО ----------
+            const SECTORS = [0, 0, 0.1, 0.1, 1.5, 2, 5, 11];  // 8 секторов
+            const COLORS = ['#ffd9e6', '#ffe4f0', '#ffd9e6', '#ffe4f0', '#ffd9e6', '#ffe4f0', '#ffd9e6', '#ffe4f0'];
+            const WHEEL_SIZE = 600;
+
+            let balance = 1000;
+            const canvas = document.getElementById('wheelCanvas');
+            const ctx = canvas.getContext('2d');
+            const balanceSpan = document.getElementById('balanceDisplay');
+            const betInput = document.getElementById('betInput');
+            const spinBtn = document.getElementById('spinButton');
+            const lastResultDiv = document.getElementById('lastResult');
+
+            let rotation = 0;
+            let isSpinning = false;
+            let animFrame = null;
+            let velocity = 0;
+            const friction = 0.985;
+            const minSpin = 0.002;
+
+            function drawWheel(angle) {
+                ctx.clearRect(0, 0, WHEEL_SIZE, WHEEL_SIZE);
+                const cx = WHEEL_SIZE/2, cy = WHEEL_SIZE/2;
+                const R = WHEEL_SIZE * 0.42;
+                const step = (Math.PI * 2) / SECTORS.length;
+
+                for (let i = 0; i < SECTORS.length; i++) {
+                    const start = i * step + angle;
+                    const end = start + step;
+
+                    ctx.fillStyle = COLORS[i];
+                    ctx.beginPath();
+                    ctx.moveTo(cx, cy);
+                    ctx.arc(cx, cy, R, start, end);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 2.5;
+                    ctx.beginPath();
+                    ctx.moveTo(cx, cy);
+                    ctx.arc(cx, cy, R, start, end);
+                    ctx.lineTo(cx, cy);
+                    ctx.stroke();
+
+                    // текст множителя
+                    ctx.save();
+                    ctx.translate(cx, cy);
+                    const mid = start + step/2;
+                    ctx.rotate(mid);
+                    const textR = R * 0.7;
+                    ctx.font = `600 ${R * 0.45}px 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif`;
+                    ctx.fillStyle = '#9f5f74';
+                    ctx.shadowColor = '#ffb7c5';
+                    ctx.shadowBlur = 12;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    let txt = SECTORS[i].toString();
+                    if (SECTORS[i] === 0.1) txt = '0.1';
+                    else if (SECTORS[i] === 1.5) txt = '1.5';
+                    ctx.fillText(txt, textR, 0);
+                    ctx.restore();
+                }
+
+                // центр
+                ctx.beginPath();
+                ctx.arc(cx, cy, 16, 0, 2*Math.PI);
+                ctx.fillStyle = '#ffffff';
+                ctx.shadowBlur = 16;
+                ctx.shadowColor = '#ffb0c0';
+                ctx.fill();
+                ctx.shadowBlur = 0;
+                ctx.strokeStyle = '#ffb7c5';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+            }
+
+            function getSectorIndex(angle) {
+                let norm = (angle % (2*Math.PI) + 2*Math.PI) % (2*Math.PI);
+                const upAngle = 3 * Math.PI / 2; // верх
+                let localUp = (upAngle - norm + 2*Math.PI) % (2*Math.PI);
+                const step = (2*Math.PI) / SECTORS.length;
+                let idx = Math.floor(localUp / step);
+                return idx >= SECTORS.length ? SECTORS.length-1 : idx;
+            }
+
+            function updateBalance() {
+                balanceSpan.textContent = Math.floor(balance);
+            }
+
+            function showMessage(text, icon = '🌸') {
+                document.getElementById('modalIcon').textContent = icon;
+                document.getElementById('modalText').textContent = text;
+                document.getElementById('messageModal').style.display = 'flex';
+            }
+
+            window.closeMessageModal = function() {
+                document.getElementById('messageModal').style.display = 'none';
+            };
+
+            function spinAnimation() {
+                if (!isSpinning) return;
+
+                velocity *= friction;
+                rotation += velocity;
+                drawWheel(rotation);
+
+                if (Math.abs(velocity) > minSpin) {
+                    animFrame = requestAnimationFrame(spinAnimation);
+                } else {
+                    isSpinning = false;
+                    if (animFrame) cancelAnimationFrame(animFrame);
+                    animFrame = null;
+
+                    const idx = getSectorIndex(rotation);
+                    const multiplier = SECTORS[idx];
+                    const bet = parseInt(betInput.value, 10);
+
+                    if (bet < 1 || isNaN(bet)) {
+                        showMessage('Ставка должна быть ≥ 1', '⚠️');
+                        spinBtn.disabled = false;
+                        return;
+                    }
+
+                    if (bet > balance) {  // баланс уже уменьшен, но защита от двойного списания
+                        showMessage('Недостаточно цветов!', '💔');
+                        spinBtn.disabled = false;
+                        return;
+                    }
+
+                    const win = Math.floor(bet * multiplier);
+                    if (multiplier > 0) {
+                        balance += win;
+                        lastResultDiv.innerHTML = `🎉 x${multiplier} = +${win} 🌸`;
+                        flowerRain(16, '🌸');
+                    } else {
+                        lastResultDiv.innerHTML = `😢 x0 — проигрыш`;
+                        flowerRain(8, '🌧️');
+                    }
+
+                    updateBalance();
+                    spinBtn.disabled = false;
+                }
+            }
+
+            function startSpin() {
+                if (isSpinning) return;
+
+                const bet = parseInt(betInput.value, 10);
+                if (isNaN(bet) || bet < 1) {
+                    showMessage('Введи ставку ≥ 1', '⚠️');
+                    return;
+                }
+                if (bet > balance) {
+                    showMessage(`Не хватает! Баланс: ${balance}`, '💔');
+                    return;
+                }
+
+                balance -= bet;
+                updateBalance();
+
+                isSpinning = true;
+                spinBtn.disabled = true;
+
+                const spins = 10 * Math.PI;  // 5 оборотов
+                const randomAdd = Math.random() * 2 * Math.PI;
+                velocity = (spins + randomAdd) * (1 - friction) * 0.9;
+
+                if (animFrame) cancelAnimationFrame(animFrame);
+                animFrame = requestAnimationFrame(spinAnimation);
+            }
+
+            // макс ставка
+            document.getElementById('maxBetBtn').addEventListener('click', () => {
+                betInput.value = balance;
+            });
+
+            spinBtn.addEventListener('click', startSpin);
+            canvas.addEventListener('click', startSpin); // можно и по барабану
+
+            // заголовок дождик
+            document.getElementById('titleClick').addEventListener('click', () => flowerRain(20));
+            document.getElementById('easterEgg').addEventListener('click', () => {
+                showMessage('С 8 марта! 🌸 Любви и счастья', '💗');
+            });
+
+            // закрытие модалки по клику на фон
+            window.onclick = function(e) {
+                const modal = document.getElementById('messageModal');
+                if (e.target === modal) modal.style.display = 'none';
+            };
+
+            // старт
+            drawWheel(rotation);
+            updateBalance();
+            lastResultDiv.innerHTML = 'Сделай ставку';
+        })();
+    </script>
+</body>
+</html>
