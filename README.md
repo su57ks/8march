@@ -3,7 +3,7 @@
 <div align="center">
 
 ![Version](https://img.shields.io/badge/версия-1.0.0-ff69b4.svg?style=for-the-badge&labelColor=black)
-![License](https://img.shields.io/badge/лицензия-MIT-pink.svg?style=for-the-badge&labelColor=black)
+![License](https://img.shields.io/badge/лицензия-GPLv3-blue.svg?style=for-the-badge&labelColor=black)
 ![Status](https://img.shields.io/badge/статус-stable-brightgreen.svg?style=for-the-badge&labelColor=black)
 ![Mobile](https://img.shields.io/badge/мобильная-адаптация-9cf.svg?style=for-the-badge&labelColor=black)
 
@@ -79,8 +79,8 @@ cd 8march
 | Роль | Имя | Контакт |
 |------|-----|---------|
 | 👨‍💻 **Автор** | Aizen | [@su57ks](https://t.me/su57ks) |
-| 💡 **Идеи** | selyswag | [@selyswag](https://t.me/selyswag) |
-| 🧪 **Тестирование** | Ярослава | — |
+| 💡 **Идеи** | Santus | [@selyswag](https://t.me/selyswag) |
+| 🧪 **Тестеры** | Амир, Лёша и Ярослава | — |
 | 🙏 **Благодарности** | Егору Е. и Денису С. | — |
 
 ---
@@ -119,7 +119,7 @@ cd 8march
 | **Стоимость** | 10🌸 | Бесплатно (доступ) / ставки цветами | 10🌸 |
 | **Механика** | Отрывание лепестков | Ставки на множители | Случайный цветок |
 | **Награда** | Предсказания | x0, x0.1, x1.5, x2, x5, x11 | Эмодзи цветка |
-| **Особенности** | Анимация вращения | 8 секторов с разными множителями | 8 видов цветов |
+| **Сектора** | 9-12 лепестков | 8 секторов | 8 секторов |
 | **Визуализация** | CSS-ромашка | Canvas-колесо | Canvas-колесо |
 | **Уровень сложности** | 🟢 Простая | 🔴 Азартная | 🟡 Случайная |
 
@@ -147,7 +147,7 @@ cd 8march
 - Цветопад при выигрыше
 
 **🎡 Колесо удачи** (`bouquet.html`)
-- 8 секторов с цветами: сакура, ромашка, подсолнух, гибискус, тюльпан, роза, сакура (дубль), веточка
+- 8 секторов с цветами: сакура, ромашка, тюльпан, гибискус, тюльпан, роза, сакура, роза
 - Названия цветов с заглавной буквы
 - При выпадении — ливень из соответствующего цветка
 - Простая механика без ставок
@@ -179,6 +179,8 @@ cd 8march
 | `1337` | 👾 +133700 цветов + тёмно-синяя тема | Секретный |
 | `505` | 🌟 +505812 цветов + космическая тема | Секретный |
 | `МЫВАСЛЮБИМ` | 💖 +1 млрд цветов | Пасхалка |
+
+**Подсказка в модалке промокодов:** "Например 2,71828" (число e) — отсылка к математике
 
 ---
 
@@ -237,7 +239,30 @@ cd 8march
 
 ### 📜 Лицензия
 
-Проект распространяется под лицензией MIT. Подробнее в файле `LICENSE`.
+Проект распространяется под лицензией **GNU General Public License v3 (GPLv3)**.
+
+```
+                    GNU GENERAL PUBLIC LICENSE
+                       Version 3, 29 June 2007
+
+Это свободная лицензия: вы можете распространять и/или изменять
+программу в соответствии с условиями GNU General Public License,
+опубликованной Free Software Foundation, либо версии 3 лицензии,
+либо (по вашему выбору) любой более поздней версии.
+
+Данная программа распространяется в надежде, что она будет полезной,
+но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ; даже без подразумеваемых гарантий
+ТОВАРНОГО СОСТОЯНИЯ или ПРИГОДНОСТИ ДЛЯ КОНКРЕТНЫХ ЦЕЛЕЙ.
+```
+
+**Основные положения GPLv3:**
+- ✅ Вы можете использовать, изменять и распространять код
+- ✅ Вы обязаны сохранять авторские права
+- ✅ Изменённые версии также должны распространяться под GPLv3
+- ✅ Исходный код должен быть доступен
+- ❌ Нельзя добавлять дополнительные ограничения
+
+Полный текст лицензии доступен в файле [LICENSE](LICENSE).
 
 <div align="center">
 
@@ -281,8 +306,8 @@ cd 8march
 | Role | Name | Contact |
 |------|------|---------|
 | 👨‍💻 **Author** | Aizen | [@su57ks](https://t.me/su57ks) |
-| 💡 **Ideas** | selyswag | [@selyswag](https://t.me/selyswag) |
-| 🧪 **Testing** | Yaroslava | — |
+| 💡 **Ideas** | Santus | [@selyswag](https://t.me/selyswag) |
+| 🧪 **Testers** | Amir, Lyosha and Yaroslava | — |
 | 🙏 **Special thanks** | Egor E. and Denis S. | — |
 
 ---
@@ -321,7 +346,7 @@ The project is crafted with soul and attention to detail — every little thing,
 | **Cost** | 10🌸 | Free (access) / bet flowers | 10🌸 |
 | **Mechanic** | Petal plucking | Bets on multipliers | Random flower |
 | **Reward** | Predictions | x0, x0.1, x1.5, x2, x5, x11 | Flower emoji |
-| **Features** | Spin animation | 8 sectors with different multipliers | 8 flower types |
+| **Sectors** | 9-12 petals | 8 sectors | 8 sectors |
 | **Visualization** | CSS daisy | Canvas wheel | Canvas wheel |
 | **Difficulty** | 🟢 Easy | 🔴 Gambling | 🟡 Random |
 
@@ -349,7 +374,7 @@ The project is crafted with soul and attention to detail — every little thing,
 - Flower rain on win
 
 **🎡 Wheel of Fortune** (`bouquet.html`)
-- 8 sectors with flowers: Sakura, Chamomile, Sunflower, Hibiscus, Tulip, Rose, Sakura (duplicate), Twig
+- 8 sectors with flowers: Sakura, Chamomile, Tulip, Hibiscus, Tulip, Rose, Sakura, Rose
 - Flower names capitalized
 - Rain of the corresponding flower on result
 - Simple mechanic without bets
@@ -381,6 +406,8 @@ The project is crafted with soul and attention to detail — every little thing,
 | `1337` | 👾 +133700 flowers + dark blue theme | Secret |
 | `505` | 🌟 +505812 flowers + cosmic theme | Secret |
 | `МЫВАСЛЮБИМ` | 💖 +1 billion flowers | Easter egg |
+
+**Hint in promo modal:** "For example 2.71828" (number e) — a math reference
 
 ---
 
@@ -439,7 +466,30 @@ Collect flowers (clicker)
 
 ### 📜 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the **GNU General Public License v3 (GPLv3)**.
+
+```
+                    GNU GENERAL PUBLIC LICENSE
+                       Version 3, 29 June 2007
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+```
+
+**Key GPLv3 provisions:**
+- ✅ You may use, modify and distribute the code
+- ✅ You must preserve copyright notices
+- ✅ Modified versions must also be distributed under GPLv3
+- ✅ Source code must be made available
+- ❌ You may not add additional restrictions
+
+The full license text is available in the [LICENSE](LICENSE) file.
 
 <div align="center">
 
