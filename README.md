@@ -27,7 +27,6 @@
   - [✨ Ключевые возможности](#-ключевые-возможности)
   - [🎮 Мини-игры](#-мини-игры)
   - [🎨 Темы оформления](#-темы-оформления)
-  - [🔑 Промокоды и секреты](#-промокоды-и-секреты)
   - [📊 Система прогрессии](#-система-прогрессии)
   - [📁 Структура проекта](#-структура-проекта)
   - [🛠 Технологии](#-технологии)
@@ -39,7 +38,6 @@
   - [✨ Key Features](#-key-features)
   - [🎮 Mini-games](#-mini-games)
   - [🎨 Color Themes](#-color-themes)
-  - [🔑 Promo Codes & Secrets](#-promo-codes--secrets)
   - [📊 Progression System](#-progression-system)
   - [📁 Project Structure](#-project-structure)
   - [🛠 Technologies](#-technologies)
@@ -165,22 +163,6 @@ cd 8march
 | **Золотая** | `theme-gold` | Золотисто-медовая | 🔐 1000🌸 | `#fbf3e0 → #f5d0a0` |
 | **Космическая** | `theme-cosmic` | Фиолетово-космическая | 🔐 Промокод `505` | `#0a0f1e → #2a1f4a` |
 | **Тёмно-синяя** | `theme-dark-blue` | Глубокий синий | 🔐 Промокод `1337` | `#0a1a2a → #0a1f4a` |
-
----
-
-### 🔑 Промокоды и секреты
-
-| Промокод | Эффект | Тип |
-|----------|--------|-----|
-| `1488` | 🚫 Сброс прогресса (анти-нацистское послание) | Штрафной |
-| `52` | 🏛️ +5200 цветов (Санкт-Петербург) | Бонусный |
-| `67` | 😕 +1 цветок (шутка) | Шуточный |
-| `69` | 😏 +690 цветов | Шуточный |
-| `1337` | 👾 +133700 цветов + тёмно-синяя тема | Секретный |
-| `505` | 🌟 +505812 цветов + космическая тема | Секретный |
-| `МЫВАСЛЮБИМ` | 💖 +1 млрд цветов | Пасхалка |
-
-**Подсказка в модалке промокодов:** "Например 2,71828" (число e) — отсылка к математике
 
 ---
 
@@ -392,22 +374,6 @@ The project is crafted with soul and attention to detail — every little thing,
 | **Gold** | `theme-gold` | Golden-honey | 🔐 1000🌸 | `#fbf3e0 → #f5d0a0` |
 | **Cosmic** | `theme-cosmic` | Purple cosmic | 🔐 Promo code `505` | `#0a0f1e → #2a1f4a` |
 | **Dark Blue** | `theme-dark-blue` | Deep blue | 🔐 Promo code `1337` | `#0a1a2a → #0a1f4a` |
-
----
-
-### 🔑 Promo Codes & Secrets
-
-| Promo Code | Effect | Type |
-|------------|--------|------|
-| `1488` | 🚫 Progress reset (anti-Nazi message) | Penalty |
-| `52` | 🏛️ +5200 flowers (St. Petersburg) | Bonus |
-| `67` | 😕 +1 flower (joke) | Joke |
-| `69` | 😏 +690 flowers | Joke |
-| `1337` | 👾 +133700 flowers + dark blue theme | Secret |
-| `505` | 🌟 +505812 flowers + cosmic theme | Secret |
-| `МЫВАСЛЮБИМ` | 💖 +1 billion flowers | Easter egg |
-
-**Hint in promo modal:** "For example 2.71828" (number e) — a math reference
 
 ---
 
